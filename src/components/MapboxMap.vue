@@ -301,6 +301,8 @@ export default {
       clearInterval(loopController);
       this.updatingFlag = 0;
       this.trackChildLocationFlag = false
+      //test用
+      console.log(FamiliarService.testYahooApi("4901301008473"));
     },
     moveToCenter(lon, lat) {
       this.map.flyTo({
