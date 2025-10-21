@@ -31,6 +31,36 @@ class FamiliarService {
             'Content-Type':'application/json;charset=utf-8'
           }})
     }
+
+    getLatestTemp() {
+        return http.get("/sensor/latest");
+    }
+
+    getDayTemp(stringData) {
+        return http.get(`/sensor/day?date=${stringData}`);
+    }
+
+    resetTaken() {
+        return http.get("/medicine/reset");
+    }
+
+    changeLanguage(intData) {
+        return http.post(`/language/change?languageCode=${intData}`, {headers:{
+            'Content-Type':'application/json;charset=utf-8'
+          }})
+    }
+
+    clearHistory() {
+        return http.get("/openai/clearHistory");
+    }
+    // speechToTextCommit(formData) {
+    //     return http.post('/assemblyai/uploadFile', formData, {headers:{
+    //         "Content-Type": "multipart/form-data"
+    //       }})
+    // }
+    // speechToTextCheckResult(id) {
+    //     return http.get(`/assemblyai/result/${id}`)
+    // }
 }
 
 export default new FamiliarService();

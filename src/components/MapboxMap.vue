@@ -9,7 +9,13 @@
     </div>
     <div v-else> 
     <div class="text-container">
+      <p>ツール類</p>
        <!-- <img alt="logo" src="../assets/img/familiar.png"> -->
+       <!-- <div class="button" @click="moveToTemp">温度湿度計</div> -->
+       <div class="spacer"></div>
+       <div class="button" @click="resetTaken">服薬時間リセット</div>
+       <div class="spacer"></div>
+       <div class="button" @click="moveToSpeech">語音 Room</div>
       <p>子供位置関連操作</p>
     <div v-if="updatingFlag===0">
           <div class="button" @click="getChildLocationAuto">自動更新</div>
@@ -117,6 +123,17 @@ export default {
       localStorage.setItem('token', "")
       localStorage.setItem('userId', "")
       this.Toast("再ログインしてください。")
+    },
+    moveToSpeech() {
+      this.$router.push({name:'speechToText'})
+    },
+    resetTaken() {
+      FamiliarService.resetTaken().then(response => {
+        const rtnValue = response.data
+        if(rtnValue === "ok") {
+          this.Toast("今日の服薬をリセットしました。", 3000)
+        }
+      });
     },
     createMap() {
       // instantiate map.  this method runs once after the vue component is mounted to the dom
@@ -302,7 +319,7 @@ export default {
       this.updatingFlag = 0;
       this.trackChildLocationFlag = false
       //test用
-      console.log(FamiliarService.testYahooApi("4901301008473"));
+      // console.log(FamiliarService.testYahooApi("4901301008473"));
     },
     moveToCenter(lon, lat) {
       this.map.flyTo({
@@ -445,5 +462,8 @@ export default {
     display: inline-block;
     border: 2px solid rgb(255,194,64);
     background: linear-gradient(to bottom, rgb(255,244,92), rgb(240,229,86)); 
+}
+.spacer {
+  height: 15px;
 }
 </style>

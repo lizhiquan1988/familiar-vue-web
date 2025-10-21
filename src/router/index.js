@@ -3,6 +3,10 @@ import Top from '../components/Top.vue'
 import Registration from '../components/Registration.vue'
 import Login from '../components/Login.vue'
 import NotFound from '../components/NotFound.vue'
+import TemperatureChart from '../components/TemperatureChart'
+import ChatAiTest from '../components/ChatAiTest'
+import SpeechToText from '../components/SpeechToText'
+
 const routes = [
   {
     path: '/',
@@ -24,6 +28,21 @@ const routes = [
     name: 'doLogin',
     component: Login,
     props: route => ({ userId: route.params.userId, password: route.params.password })
+  },
+  {
+    path: '/sensorTemp',
+    name: 'temperature',
+    component: TemperatureChart
+  },
+  {
+    path: '/chatai',
+    name: 'openAiChat',
+    component: ChatAiTest
+  },
+  {
+    path: '/speech',
+    name: 'speechToText',
+    component: SpeechToText
   },
   {
     path:'/error',
