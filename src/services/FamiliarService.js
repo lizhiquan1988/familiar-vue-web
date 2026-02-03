@@ -53,6 +53,11 @@ class FamiliarService {
     clearHistory() {
         return http.get("/openai/clearHistory");
     }
+
+    sendAudioTest() {
+        return http.get("/openai/testAudio");
+    }
+    
     // speechToTextCommit(formData) {
     //     return http.post('/assemblyai/uploadFile', formData, {headers:{
     //         "Content-Type": "multipart/form-data"
