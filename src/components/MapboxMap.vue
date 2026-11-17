@@ -19,6 +19,9 @@
       <div v-if="distanceMeter===0">お子様が隣にいます。</div>
       <div v-else >お子様との距離：{{distanceMeter}}</div>
       <div v-if="updateTime!==0" class="text-commend-update">*{{updateTime}}で取得した位置情報です。</div>
+    </div>
+    <div class="text-container">
+      <div class="button" @click="goToPlayVideoPage">ピッピ ライブへ</div>
     </div>      
     <div id="map"></div>
   </main>
@@ -73,8 +76,7 @@ export default {
     createMap() {
       // instantiate map.  this method runs once after the vue component is mounted to the dom
       this.map = new mapboxgl.Map({
-        accessToken:
-          "pk.eyJ1IjoibWFwYm94bGl6aGlxdWFuIiwiYSI6ImNsZWZkejFyZzA0cTIzeHQxMTYzd2hrcjIifQ.GB7FcwHXN4gjp98WboK-1g",
+        accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         minzoom: 5,
@@ -324,6 +326,9 @@ export default {
       }).catch(e => {
         console.log(e);
       });
+    },
+    goToPlayVideoPage() {
+      this.$router.push('/playvideo');
     }
   }
 };

@@ -15,6 +15,10 @@ class FamiliarService {
     sendWebSocket(message) {
         return http.get(`/webSocket/${message}`);
     }
+
+    getVideoStream() {
+        return http.get("/video/stream", { responseType: 'blob' });
+    }
 }
 
 export default new FamiliarService();

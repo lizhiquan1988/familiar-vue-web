@@ -1,17 +1,15 @@
 <template>
   <p>子供の見守り</p>
-  <MapboxMap />
+  <router-view />
   <PageEnd />
 </template>
 
 <script>
-import MapboxMap from './components/MapboxMap.vue'
-import PageEnd from './components/PageEnd.vue'
+import PageEnd from './components/PageEnd.vue';
 
 export default {
   name: 'App',
   components: {
-    MapboxMap,
     PageEnd
   }
 }
